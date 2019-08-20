@@ -52,7 +52,7 @@
     */
   </style>
 </head>
-<body onload="alert('Vá à Nova Zelândia para ver os marcadores e o heatmap!')">
+<body>
   <!-- Div do Mapa -->
   <div id='map'></div>
 
@@ -70,8 +70,8 @@
     /* ================================= CRIAÇÃO DO MAPA ================================= */
     /* criando um objeto de mapa */
     var map = L.map(document.getElementById('map'), {
-      center: [-20.1438, -44.1301],
-      zoom: 15,
+      center: [-22.132864468559912, -51.400802135467536],
+      zoom: 20,
       zoomSnap: 0.9,
       zoomControl: false
     });
@@ -96,7 +96,6 @@
     earthquakeMarker.addTo(map);
 
     /* adicionando um círculo */
-    /*
     var circle = L.circle([51.508, -0.11], {
       color: 'red',
       fillColor: '#f03',
@@ -104,19 +103,41 @@
       radius: 500
     }).addTo(map);
     circle.bindPopup("I am a circle.");
-    */
 
     /* adicionando um polígono */
-    /*
     var polygon = L.polygon([
-      [51.509, -0.08],
-      [51.503, -0.06],
-      [51.51, -0.047]
-      ]).addTo(map);
-    polygon.bindPopup("I am a polygon.");
-    */
-    /* =================================================================================== */
+        [-22.13224829528638, -51.40103280544282],
+        [-22.1323228325192, -51.40075385570527],
+        [-22.132809808136525, -51.40078067779542],
+        [-22.13271539462798, -51.40114545822144]
+      ], {color: 'blue'}).addTo(map);
+      polygon.bindPopup("<b>Beneficiário:</b> João da Silva<br/> <b>Telefone:</b> (18) 2222-2222<br/> <b>Email: </b> joao@outlook.com <br/> <b>CPF:</b> 000.000.000-00");
 
+      var polygon2 = L.polygon([
+        [-22.132397369712596, -51.40047490596771],
+        [-22.1323228325192, -51.40075385570527],
+        [-22.132809808136525, -51.40078067779542],
+        [-22.132904221581793, -51.4004534482956]
+      ], {color: 'red'}).addTo(map);
+      polygon2.bindPopup("<b>Beneficiário:</b> Fernanda Alves<br/> <b>Telefone:</b> (18) 3333-3333 <br/> <b>Email: </b> fernanda@gmail.com <br/> <b>CPF:</b> 111.111.111-11");
+
+      var polygon3 = L.polygon([
+        [-22.132407308002076, -51.40046417713165],
+        [-22.132521598280622, -51.400077939033515],
+        [-22.132943974592443, -51.4002925157547],
+        [-22.132904221581793, -51.4004534482956]
+      ], {color: 'green'}).addTo(map);
+      polygon3.bindPopup("<b>Beneficiário:</b> Junior Machado<br/> <b>Telefone:</b> (18) 4444-4444 <br/> <b>Email: </b> junior@yahoo.com <br/> <b>CPF:</b> 222.222.222-22");
+
+      var polygon4 = L.polygon([
+        [-22.132521598280622, -51.400072574615486],
+        [-22.132571289677145, -51.399874091148384],
+        [-22.133008573210834, -51.40011012554169],
+        [-22.132943974592443, -51.40028715133667]
+      ], {color: 'purple'}).addTo(map);
+      polygon4.bindPopup("<b>Beneficiário:</b> Bianca Martins<br/><b>Telefone:</b> (18) 5555-5555 <br/> <b>Email: </b> bianca@hotmail.com <br/> <b>CPF:</b> 333.333.333-33");
+    
+    /* =================================================================================== */
 
     /* ================================ ADIÇÃO DE OVERLAYS =============================== */
     /* Interesting places */
@@ -162,18 +183,22 @@
     baserelief.addTo(map);
     */
 
+    /*
     mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
     var BlackAndWhite = L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png', {
       attribution: '&copy; ' + mapLink + ' Contributors',
       maxZoom: 18,
     }).addTo(map);
+    */
 
+    /*
     mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
     wholink ='<a href="http://stamen.com">Stamen Design</a>';
     var stamenWatercolor = L.tileLayer('http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg', {
       attribution: '&copy; '+mapLink+' Contributors & '+wholink,
       maxZoom: 18,
     }).addTo(map);
+    */
 
     mapLink = '<a href="http://www.esri.com/">Esri</a>';
     wholink = 'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP,\
@@ -187,8 +212,8 @@
     /* para permitir que o usuário escolha qual deles é exibido, criando um objeto para manter a descrição e a camada */
     var baselayers = {
       'Esri World Imagery': Esri_World_Imagery,
-      'Stamen.Watercolor': stamenWatercolor,
-      'Black and White': BlackAndWhite,
+      /*'Stamen.Watercolor': stamenWatercolor,*/
+      /*'Black and White': BlackAndWhite,*/
       /*'Topographique': baserelief,*/
       'OpenStreetMap Standard': basemap
     };
@@ -207,11 +232,9 @@
     }).addTo(map);
 
     /* função para o botão retornar as coordenadas do local atual */
-    /*
     function getCenterAndZoom(){
       alert("Latitude: "+map.getCenter().lat+"\nLongitude: "+map.getCenter().lng+"\nTamanho do Zoom: "+map.getZoom());
     }
-    */
 
     /* adicionando uma barra de escala (canto inferior esquerdo) */
     var scale = L.control.scale()
@@ -230,6 +253,10 @@
           'true': 'Exit Fullscreen'
       }
     }));
+
+    map.on('click', function(e) {
+      alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+    });
 
     </script>
 </body>
