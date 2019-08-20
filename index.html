@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Leaflet Demo</title>
+  <title>Protótipo mapa</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
@@ -86,23 +86,6 @@
 
 
     /* =============================== ADIÇÃO DE MARCADORES ============================== */
-    /* criando o marcador com um título */
-    var earthquakeMarker = L.marker([-20.1438, -44.1301], {
-      title: 'Janeiro 25, 2019 Desastre de Brumadinho'
-    });
-    /* adicionando um pop-up ao marcador */
-    earthquakeMarker.bindPopup("Janeiro 25, 2019 Desastre de Brumadinho");
-    /* adicionando-o ao mapa */
-    earthquakeMarker.addTo(map);
-
-    /* adicionando um círculo */
-    var circle = L.circle([51.508, -0.11], {
-      color: 'red',
-      fillColor: '#f03',
-      fillOpacity: 0.5,
-      radius: 500
-    }).addTo(map);
-    circle.bindPopup("I am a circle.");
 
     /* adicionando um polígono */
     var polygon = L.polygon([
@@ -254,9 +237,9 @@
       }
     }));
 
-    map.on('click', function(e) {
-      alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
-    });
+    // map.on('click', function(e) {
+    //   alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+    // });
 
     </script>
 </body>
